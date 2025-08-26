@@ -1,0 +1,7 @@
+# requirements.txt  (Pi‑friendly, smaller)
+numpy==1.24.2
+torch==2.0.1
+opencv-python-headless==4.8.0.76
+mediapipe==0.10.5
+fastapi==0.116.1
+uvicorn[standard]==0.30.6
