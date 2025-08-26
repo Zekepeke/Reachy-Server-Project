@@ -11,6 +11,7 @@ from picamera2.outputs import FileOutput
 import libcamera  # for Transform if you want flips/rotates
 
 from server.pipeline import Pipeline
+from model.models import FaceLandmarksModel
 
 app = FastAPI()
 app.add_middleware(
@@ -18,7 +19,7 @@ app.add_middleware(
     allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
 )
 
-pipe = Pipeline(model_path="hand_landmarker.task")
+pipe = FaceLandmarksModel()
 
 class MJPEGBuffer(io.BufferedIOBase):
     def __init__(self):
@@ -58,10 +59,10 @@ def mjpeg():
             with output.cv:
                 output.cv.wait()
                 frame = output.frame
-                frame = pipe(frame)
+            jpeg = model(frame, out_format="jpeg_bytes", jpeg_quality=80)
             yield (boundary + b"\r\n"
                    b"Content-Type: image/jpeg\r\n"
-                   b"Content-Length: " + str(len(frame)).encode() + b"\r\n\r\n" +
-                   frame + b"\r\n")
+                   b"Content-Length: " + str(len(jpeg)).encode() + b"\r\n\r\n" +
+                   jpeg + b"\r\n")
     return StreamingResponse(gen(),
         media_type="multipart/x-mixed-replace; boundary=frame")
