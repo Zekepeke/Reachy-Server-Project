@@ -24,7 +24,7 @@ class FaceLandmarksModel:
 
     def __init__(
         self,
-        model_path: str = "face_landmarker.task",
+        model_path: str = "model/face_landmarker.task",
         *,
         num_faces: int = 2,
         running_mode: mp_vision.RunningMode = mp_vision.RunningMode.VIDEO,
@@ -36,7 +36,7 @@ class FaceLandmarksModel:
             running_mode=running_mode,
         )
         self.landmarker = mp_vision.FaceLandmarker.create_from_options(opts)
-        self._timestamp_ms = 0  # must strictly increase in VIDEO mode
+        self._timestamp_ms = 1  # must strictly increase in VIDEO mode
 
     # ---------- public API ----------
     def __call__(
