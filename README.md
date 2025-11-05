@@ -1,7 +1,8 @@
 # Reachy Server Project
 
 A lightweight FastAPI + Uvicorn backend that streams live video from the Raspberry Pi 5 camera using the **Picamera2** and **libcamera** stack.  
-Built to support my DIY Reachy Mini–style project with MediaPipe/OpenCV gesture recognition and future LLM/TTS integration.
+Built to support my DIY Reachy Mini–style project with MediaPipe/OpenCV gesture recognition and future LLM/TTS integration. Works with the frontend:
+https://github.com/Zekepeke/ReachyCloneWebApp
 
 ---
 
