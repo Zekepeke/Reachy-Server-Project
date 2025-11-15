@@ -41,6 +41,10 @@ cd Reachy-Server-Project
 
 # Create a venv (put it on your big drive if your SD is small)
 python3 -m venv .venv --system-site-packages
+# For me
+# DO this instead (uses external drive):
+# python3 -m venv /media/zekepeke/82057e23-3142-449a-8e03-7957f74289d41/envs/my-new-project-venv
+
 source .venv/bin/activate
 
 # Install dependencies
@@ -85,6 +89,9 @@ Reachy-Server-Project/
 - If you see `ModuleNotFoundError: No module named 'libcamera'` → make sure `python3-libcamera` and `python3-picamera2` are installed via `apt`.
 - If pip errors with `No space left on device` → move your `.venv` to your external drive (`/dev/sdb2`) and symlink it back.
 
+# Clear pip cache regularly:
+pip cache purge
+rm -rf ~/.cache/pip
 ---
 
 ## Running Later
