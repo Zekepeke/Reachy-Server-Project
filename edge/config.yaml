@@ -1,24 +1,24 @@
 cloud:
-  host: "203.0.113.5"     # or DNS name of your cloud box
-  grpc_port: 7000
+  host: "192.168.4.32"   # your Mac’s IP
+  grpc_port: 7001
   ws_port: 7080
-  rtsp_url: "rtsp://203.0.113.5:8554/reachy"
+  rtsp_url: "rtsp://192.168.1.50:8554/reachy"
 
 audio:
   sample_rate: 16000
-  chunk_size: 3200        # ~0.2s
-  input_device_index: null   # set if you have multiple mics
-  output_device_index: null  # set if you want a specific speaker
+  chunk_size: 3200
+  input_device_index: null   # set to your ReSpeaker index if needed
+  output_device_index: null  # or set a number if you use a speaker
 
 mqtt:
-  broker: "203.0.113.5"
+  broker: "192.168.1.50"     # optional for telemetry
   port: 1883
   base_topic: "reachy"
 
 telemetry:
   interval_sec: 2
   read_cpu_temp: true
-  pose_provider: "none"   # later: "i2c" or "serial"
+  pose_provider: "none"
 
 security:
   ws_token_env: "REACHY_WS_TOKEN"

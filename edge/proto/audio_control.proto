@@ -1,0 +1,9 @@
+syntax = "proto3";
+package audio;
+
+message AudioChunk { bytes pcm16 = 1; int32 sample_rate = 2; }
+message TTSChunk   { bytes pcm16 = 1; }
+
+service AudioIO {
+  rpc Converse (stream AudioChunk) returns (stream TTSChunk) {}
+}
